@@ -121,8 +121,8 @@ class Game{
     Sound eatSound;
     Sound wallHit;
     Sound move;
-    double speed = 0.50;
-    float update;
+    double speed = 0.40;
+    int update;
     Game(){
         InitAudioDevice();
         eatSound = LoadSound("sound/music_food.mp3");
@@ -158,8 +158,9 @@ class Game{
                 food.position = food.GenerateRandomPosition(snake.body);
                 snake.addSegment = true;
                 update++;
+
                 if(update == 4){
-                    speed = max(0.02, speed - 0.01);
+                    speed = max(0.02, speed - 0.06);
                     update = 0;
                 }
                 score++;
@@ -193,7 +194,7 @@ class Game{
             running = false;
             score = 0;
             update = 0;
-            speed = 0.50;
+            speed = 0.40;
              PlaySound(wallHit);
         }
     };
